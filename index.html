@@ -1,135 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chief Bud - Veteran Housing Help</title>
-  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: url('pattern.png') repeat;
-      font-family: 'Black Ops One', cursive;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .container {
-      background-color: rgba(0, 0, 0, 0.675);
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 1000px;
-      width: 100%;
-      box-shadow: 0 0 10px rgba(134, 133, 133, 0.3);
-    }
-
-    img {
-      width: 100%;
-      max-width: 300px;
-      margin-bottom: 20px;
-    }
-
-
-    video {
-      width: 100%;
-      height: 100%;
-      max-width: 600px;
-      margin-bottom: 10px;
-      border: 3px solid white;
-      border-radius: 8px;
-    }
-
-    h1 {
-      font-size: 1.8em;
-      margin-bottom: 10px;
-      color: #fffb00;
-    }
-
-    p.mission {
-      font-size: 1.2em;
-      margin-bottom: 20px;
-      color: #fff;
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 20px 0;
-    }
-
-    ul li {
-      margin: 10px 0;
-      font-size: 1em;
-    }
-
-    .cta-question {
-      font-size: 1.2em;
-      margin: 30px 0 15px;
-      color: #fffb00;
-    }
-
-    .cta-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-
-    .cta-buttons button {
-      background-color: #EC5228;
-      font-weight: bold;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 1em;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .cta-buttons button:hover {
-      background-color: #c3421f;
-    }
-
-    @media (max-width: 400px) {
-      .cta-buttons {
-        flex-direction: column;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Chad King</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Overpass', sans-serif;
+            background-color: white;
+            color: black;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+        }
+        
+        /* Navigation Styles */
+        .nav-container {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: white;
+            border-bottom: 1px dashed #cccccc;
+        }
+        
+        .nav-content {
+            max-width: 80%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0; /* Removed left and right padding */
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: black;
+        }
+        
+        .nav-logo svg {
+            width: 32px;
+            height: 32px;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-logo:hover svg {
+            transform: rotate(45deg);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-menu a:hover {
+            color: #555;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 24px;
+            height: 16px;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger span:nth-child(1) {
+            top: 0;
+        }
+        
+        .hamburger span:nth-child(2) {
+            top: 7px;
+        }
+        
+        .hamburger span:nth-child(3) {
+            top: 14px;
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            margin-top: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            width: 100%;
+            padding: 20px 0; /* Removed left and right padding */
+        }
+        
+        .portfolio-container {
+            max-width: 80%;
+            width: 100%;
+            position: relative;
+            padding: 40px 0; /* Removed left and right padding */
+            margin: 0 auto;
+        }
+        
+        .graphic-container {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .eccentric-img {
+            max-width: 300px;
+            position: relative;
+            z-index: 1;
+            margin-left: auto;
+            display: block;
+        }
+        
+        .title {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        
+        .name-year {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 12px 0; /* Removed left and right padding */
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.3s ease;
+                border-left: 1px dashed #cccccc;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                margin: 20px 0;
+            }
+            
+            .portfolio-container {
+                padding: 20px 0; /* Removed left and right padding */
+            }
+            
+            .title {
+                font-size: 3.5rem;
+            }
+            
+            .name-year {
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .eccentric-img {
+                max-width: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .name-year {
+                font-size: 1.2rem;
+            }
+            
+            .eccentric-img {
+                max-width: 150px;
+            }
+            
+            .nav-logo svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <img src="ChiefBud0421.png" alt="Chief Bud Character">
-    <video controls poster="poster.png" controlsList="nodownload">
-      <source src="video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <h1>Chief Bud - Veteran Housing Navigator</h1>
-
-    <p class="mission">Chief Bud - A Veteran's Ally for Housing Benefits Assistance.</p>
-
-    <ul>
-      <li>✅ Find Your Home faster</li>
-      <li>✅ Clearer view of VA regulations</li>
-      <li>✅ 24/7 Assistance whenever you need it most</li>
-      <li>✅ One-stop access point to available housing resources.</li>
-    </ul>
-
-    <div class="cta">
-      <p class="cta-question">Do you think that you would use Chief Bud to help you with VA housing benefits needs?</p>
-      <div class="cta-buttons">
-        <button>Yes</button>
-   
-        <button>No</button>
-      </div>
-    </div>
-  </div>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">
+                <svg width="32" height="32" viewBox="0 0 650 650" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <path fill="none" stroke="#1D1D1B" stroke-width="28" stroke-miterlimit="10" d="m616.69,325.34c0,161.94998 -131.28,293.23001 -293.23001,293.23001s-293.22998,-131.28 -293.22998,-293.23001c0,-161.95 131.28,-293.23999 293.23001,-293.23999s293.22998,131.28999 293.22998,293.23999z"/>
+                        <path fill="#1D1D1B" d="m291.82043,83.64487c-111.623,0 -202.10443,88.59369 -202.10443,197.88818c0,109.29544 90.4805,197.89822 202.10443,197.89822c111.62299,0 202.11255,-88.60367 202.11255,-197.89822c0,-109.29358 -90.48956,-197.88818 -202.11255,-197.88818zm7.48206,390.26718c-104.3597,0 -188.95785,-82.83441 -188.95785,-185.01907c0,-102.1801 84.59815,-185.01451 188.95785,-185.01451c104.35886,0 188.95789,82.83534 188.95789,185.01451c0,102.18558 -84.59903,185.01907 -188.95789,185.01907z"/>
+                        <path fill="#1D1D1B" d="m322.63931,130.14655c-54.54349,0 -98.75931,43.5043 -98.75931,97.18179s44.21664,97.19211 98.75931,97.19211c54.54587,0 98.76172,-43.51538 98.76172,-97.19211s-44.21585,-97.18179 -98.76172,-97.18179zm4.17288,170.55853c-46.97946,0 -85.05008,-37.46786 -85.05008,-83.69727c0,-46.22626 38.07062,-83.69571 85.05008,-83.69571c46.98346,0 85.05405,37.46945 85.05405,83.69571c0.00003,46.2294 -38.07059,83.69727 -85.05405,83.69727z" transform="rotate(-65.30653381347656 322.6405029296875,227.33349609374997)"/>
+                    </g>
+                </svg>
+            </a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="portfolio-container">
+            <div class="graphic-container">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/eccentric-dD8a5Eth1i6kQWH5e4Q5dSI6x7TmgE.png" alt="Abstract graphic" class="eccentric-img">
+            </div>
+            
+            <h1 class="title">Portfolio</h1>
+            <h2 class="name-year">Chad King | 2025</h2>
+            <p class="subtitle">UX Designer | Veteran | Advocate for Human-Centered Innovation</p>
+        </div>
+    </main>
+    
+    <script>
+        // Toggle mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            // Animate hamburger to X
+            hamburger.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
