@@ -7,7 +7,7 @@
 body {
     font-family: 'Overpass', sans-serif;
     background-color: rgb(218, 213, 208);
-    color: #2f2e2d;
+    color: #2A132F;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -137,6 +137,7 @@ body {
     position: relative;
     padding: 40px 0;
     margin: 0 auto;
+
 }
 
 .graphic-container {
