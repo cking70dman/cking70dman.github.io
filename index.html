@@ -3,116 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Chad King</title>
+    <title>Chad King | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menustyle.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+</head> 
 <body>
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <div class="nav-content">
-            <a href="index.html" class="nav-logo">
-                <svg width="32" height="32" viewBox="0 0 650 650" xmlns="http://www.w3.org/2000/svg">
-                    <g>
-                        <path fill="none" stroke="#1D1D1B" stroke-width="28" stroke-miterlimit="10" d="m616.69,325.34c0,161.94998 -131.28,293.23001 -293.23001,293.23001s-293.22998,-131.28 -293.22998,-293.23001c0,-161.95 131.28,-293.23999 293.23001,-293.23999s293.22998,131.28999 293.22998,293.23999z"/>
-                        <path fill="#1D1D1B" d="m291.82043,83.64487c-111.623,0 -202.10443,88.59369 -202.10443,197.88818c0,109.29544 90.4805,197.89822 202.10443,197.89822c111.62299,0 202.11255,-88.60367 202.11255,-197.89822c0,-109.29358 -90.48956,-197.88818 -202.11255,-197.88818zm7.48206,390.26718c-104.3597,0 -188.95785,-82.83441 -188.95785,-185.01907c0,-102.1801 84.59815,-185.01451 188.95785,-185.01451c104.35886,0 188.95789,82.83534 188.95789,185.01451c0,102.18558 -84.59903,185.01907 -188.95789,185.01907z"/>
-                        <path fill="#1D1D1B" d="m322.63931,130.14655c-54.54349,0 -98.75931,43.5043 -98.75931,97.18179s44.21664,97.19211 98.75931,97.19211c54.54587,0 98.76172,-43.51538 98.76172,-97.19211s-44.21585,-97.18179 -98.76172,-97.18179zm4.17288,170.55853c-46.97946,0 -85.05008,-37.46786 -85.05008,-83.69727c0,-46.22626 38.07062,-83.69571 85.05008,-83.69571c46.98346,0 85.05405,37.46945 85.05405,83.69571c0.00003,46.2294 -38.07059,83.69727 -85.05405,83.69727z" transform="rotate(-65.30653381347656 322.6405029296875,227.33349609374997)"/>
-                    </g>
-                </svg>
-            </a>
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
+    <header class="site-header">
+        <div class="header-container container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Site Logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <button class="nav-toggle" aria-label="toggle navigation" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link" data-target="home">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link" data-target="about">About</a></li>
+                    <li class="nav-item has-submenu">
+                        <a href="project1.html" class="nav-link submenu-link" data-target="projects" data-project-title="No Salt Sailing - Nonprofit Rebrand">Projects</a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="project1.html" class="submenu-link" data-project-title="No Salt Sailing - Nonprofit Rebrand">Project 1</a>
+                                <span class="project-title-display"></span>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="project2.html" class="submenu-link" data-project-title="DISCOVar: AR Museum App">Project 2</a>
+                                <span class="project-title-display"></span>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="project3.html" class="submenu-link" data-project-title="Digital Literacy Research">Project 3</a>
+                                <span class="project-title-display"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </div>
-    </nav>
-    
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="portfolio-container">
-            <h1 class="title">Portfolio</h1>
-            <h2 class="name-year">Chad King | 2025</h2>
-            <p class="subtitle">UX Designer | Veteran | Advocate for Human-Centered Innovation</p>
+        <div class="submenu-container">
+          
+            &nbsp;
         </div>
+    </header>
+    <main class="site-main">
+        <section class="hero-section container">
+            <div class="hero-content">
+                <h1>Portfolio</h1>
+                <p class="subtitle">Chad King <span>|</span> 2025</p>
+                <p class="tagline">
+                    UX Designer <span class="separator">|</span>
+                    Veteran <span class="separator">|</span>
+                    Advocate for Human-Centered Innovation
+                </p>
+            </div>
+        </section>
     </main>
-    <!-- Ripple Background Canvas -->
-<div class="scene" id="scene-background"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-<script>
-  const scene = document.getElementById('scene-background');
-  const viewportHeight = window.innerHeight;
+    <footer class="site-footer-simple">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Chad King. All rights reserved.</p>
+        </div>
+    </footer>
 
-  function createRipple(x, y) {
-    const ripple = document.createElement('div');
-    ripple.classList.add('ripple');
-    scene.appendChild(ripple);
-
-    const depthFactor = y / viewportHeight;
-    const minSize = 60, maxSize = 200;
-    const size = minSize + (1 - depthFactor) * (maxSize - minSize);
-    const minOpacity = 0.2, maxOpacity = 0.7;
-    const opacity = minOpacity + (1 - depthFactor) * (maxOpacity - minOpacity);
-    const minDuration = 4000, maxDuration = 7000;
-    const duration = minDuration + (1 - depthFactor) * (maxDuration - minDuration);
-
-    ripple.style.width = ripple.style.height = '0px';
-    ripple.style.left = `${x}px`;
-    ripple.style.top = `${y}px`;
-    ripple.style.opacity = opacity;
-
-    anime({
-      targets: ripple,
-      width: [0, size],
-      height: [0, size],
-      marginLeft: [-size / 2],
-      marginTop: [-size / 2],
-      opacity: [opacity, 0],
-      easing: 'easeOutQuad',
-      duration: duration,
-      complete: () => ripple.remove()
-    });
-  }
-
-  // Drop every 2 seconds
-  setInterval(() => {
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * window.innerHeight;
-    createRipple(x, y);
-  }, 2000);
-
-  // Mouse interaction
-  scene.addEventListener('click', e => {
-    const rect = scene.getBoundingClientRect();
-    createRipple(e.clientX - rect.left, e.clientY - rect.top);
-  });
-</script>
-    <script>
-        // Toggle mobile menu
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            
-            // Animate hamburger to X
-            hamburger.classList.toggle('active');
-        });
-        
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>

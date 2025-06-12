@@ -1,0 +1,279 @@
+
+
+/* General Styles */
+
+
+a {
+  text-decoration: none;
+  color: var(--font-color);
+  font-weight: 400;
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+  display: block;
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+a.active {
+  color: var(--active-link-color);
+  font-weight: 600;
+
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+.main-nav a:hover {
+  color: var(--active-link-color);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item {
+  margin-left: 100px;
+}
+
+.nav-link {
+  font-size: 18px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.nav-link.active,
+.submenu-link.active {
+  color: #4a2253;
+  font-weight: bold;
+}
+
+.nav-link.active::after,
+.submenu-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #4a2253;
+}
+
+/* Submenu Styles */
+.has-submenu {
+  position: relative;
+}
+
+.submenu {
+  display: none; /* Hidden by default, shown by JS or CSS hover/focus */
+  position: absolute;
+  top: calc(100% + 23px); /* Position below main nav item with space for dotted line */
+  right: 0%;
+  transform: translateX(5%);
+  padding: 12px 0;
+  min-width: 300px; /* Adjust as needed */
+  text-align: center;
+  z-index: 999;
+  gap: 100px; /* Space between submenu items */
+  background-color: var(--background-color);
+  z-index: -10;
+}
+
+.submenu-container {
+  background-color: var(--background-color);
+}
+  
+
+
+.nav-item.has-submenu.open > .submenu,
+.nav-item.has-submenu:hover > .submenu {
+  /* Show on hover for desktop */
+  display: flex; /* Use flex for horizontal layout */
+  justify-content: center;
+  gap: 100px; /* Space between submenu items */
+}
+
+.submenu-item {
+  padding: 0 10px;
+  position: relative; /* For project title positioning */
+}
+
+.submenu-link {
+  font-size: 16px;
+  display: block;
+  padding: 8px 15px 2px;
+  white-space: nowrap;
+}
+
+.project-title-display {
+  display: none;
+  font-size: 12px;
+  color: var(--font-color);
+  margin-top: 5px;
+  text-align: center;
+  position: absolute;
+  bottom: -30px; /* Position below the submenu item */
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content; /* Ensure it doesn't wrap unnecessarily */
+  background-color: var(--background-color);
+}
+
+/* Remove hover display for project titles on desktop */
+.submenu-item:hover .project-title-display {
+  display: none;
+}
+
+/* Keep active state display for desktop */
+.submenu-item.active .project-title-display {
+  display: block;
+}
+
+/* Hamburger Menu for Mobile */
+.nav-toggle {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001; /* Above nav menu */
+}
+
+.hamburger {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #2a132f;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: #2a132f;
+  left: 0;
+  transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  bottom: -8px;
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 969px) {
+  .header-container {
+    padding: 15px 20px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Position below the header */
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+    padding: 20px;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-item {
+    margin-left: 0;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .nav-link,
+  .submenu-link {
+    font-size: 18px; /* Match mobile design */
+  }
+
+  .nav-link.active::after,
+  .submenu-link.active::after {
+    height: 2px; /* Thinner underline for mobile if needed */
+  }
+
+  .nav-item.has-submenu.open > .submenu,
+  .nav-item.has-submenu:hover > .submenu {
+    display: none; /* Disable hover for submenu on mobile, rely on click */
+  }
+
+  .nav-item.has-submenu.open-mobile > .submenu {
+    display: flex; /* Show submenu when parent is open-mobile */
+    position: static; /* Reset absolute positioning */
+    flex-direction: column;
+    border-top: none;
+    padding: 10px 0 0 20px; /* Indent submenu items */
+    min-width: auto;
+    transform: none;
+    left: auto;
+    text-align: left;
+  }
+
+  .submenu-item {
+    padding: 8px 0;
+    margin-bottom: 5px;
+  }
+
+  /* Make project titles always visible on mobile */
+  .project-title-display {
+    display: block !important; /* Always show on mobile */
+    position: static; /* Reset absolute positioning */
+    transform: none;
+    left: auto;
+    text-align: left;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    font-size: 14px; /* Slightly larger for mobile readability */
+    color: var(--font-color);
+    opacity: 0.8; /* Slightly muted to differentiate from main link */
+  }
+
+  /* Style the submenu links to work with always-visible titles */
+  .submenu-link {
+    padding-bottom: 0; /* Reduce bottom padding since title is below */
+  }
+
+  /* Hamburger animation when active */
+  .nav-toggle.active .hamburger {
+    transform: rotate(45deg);
+  }
+  .nav-toggle.active .hamburger::before {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  .nav-toggle.active .hamburger::after {
+    bottom: 0;
+    transform: rotate(90deg);
+    opacity: 0; /* Hide bottom bar for X */
+  }
+}
