@@ -97,6 +97,7 @@ div.project1-container.project2.twocolumn .project1-column:nth-child(3) {
 div.project1-container.project2.starttwocolumn .project1-column:nth-child(1) {
   width: 75%;
   background-image: url("../images/project3/background-amap.png");
+  text-shadow: 1px 1px 15px rgba(2, 2, 2, 0.127);
 }
 div.project1-container.project2.starttwocolumn .project1-column:nth-child(2) {
   width: 0%;
@@ -136,7 +137,6 @@ div.project1-container.project2.starttwocolumn .project1-column:nth-child(3) {
   
   .project1-column:first-child {
       display: grid;
-      grid-template-columns: 1fr 1fr;
       gap: 20px;
   }
   
