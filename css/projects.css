@@ -1,311 +1,9 @@
-/* Basic Reset & Root Variables */
-:root {
-  --font-color: #2a132f;
-  --active-link-color: #4a2253;
-  --background-color: #dad5d0;
-  --font-family-main: "Overpass", sans-serif;
-  --header-height: 5rem; /* Header height set to 5rem (80px) */
-  --logo-height: 2rem; /* Approx 32px, fits well in 5rem header */
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: var(--font-family-main);
-  color: var(--font-color);
-  background-color: var(--background-color);
-  line-height: 1.7;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  font-size: 100%;
-  padding-top: var(--header-height);
-}
-
-.container {
-  width: 100%;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-/* Header Styles */
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--header-height);
-  background-color: var(--background-color);
-  display: flex;
-  align-items: center;
-  z-index: 9000;
-  border-bottom: 1px dotted rgba(42, 19, 47, 0.3);
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.logo-image {
-  height: var(--logo-height);
-  width: auto;
-  display: block;
-}
-
-
-
-/* Main Content Styles */
-.site-main {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-}
-
-.hero-section {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  text-align: left;
-  width: 100%;
-}
-
-.hero-content h1 {
-  font-size: clamp(3rem, 10vw, 5rem);
-  font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 0.5rem;
-}
-.hero-content .subtitle {
-  font-size: clamp(1.25rem, 4vw, 1.75rem);
-  margin-bottom: 1rem;
-  color: var(--font-color);
-}
-.hero-content .subtitle span {
-  color: rgba(42, 19, 47, 0.8);
-  margin: 0 0.25em;
-}
-.hero-content .tagline {
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-  color: rgba(42, 19, 47, 0.9);
-}
-.hero-content .tagline .separator {
-  color: rgba(42, 19, 47, 0.5);
-  margin: 0 0.25em;
-}
-
-/* Footer Styles */
-.site-footer-simple {
-  background-color: transparent;
-  padding: 1.5rem 0;
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--font-color);
-  margin-top: auto;
-}
-
-/* About Page Specific Styles */
-.about-page-main {
-  padding-top: 2rem;
-  padding-bottom: 3rem;
-  align-items: flex-start;
-}
-
-.page-title {
-  font-size: clamp(3rem, 10vw, 5rem);
-  font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 2rem;
-  color: var(--font-color);
-}
-
-.about-content-grid {
-  display: flex;
-  flex-direction: column; /* This sets the mobile-first order */
-  gap: 2.5rem;
-}
-
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-
-.skill-tag {
-  background-color: rgba(47, 46, 45, 0.1);
-  padding: 4px 16px 2px;
-  border-radius: 30px;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-/* The source order in HTML now dictates the mobile layout: image, then text, then contact */
-.about-profile-image {
-  width: 100%;
-  max-width: 530px;
-  height: auto;
-  border-radius: 4px;
-  display: block;
-}
-
-/* MODIFIED: This CSS rule now moves the Get in Touch section to the end on mobile */
-.get-in-touch {
-  order: 3;
-}
-.about-main-text {
-  order: 2;
-}
-.about-profile-image {
-  order: 1;
-}
-
-.get-in-touch h2,  .skills h2 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--font-color);
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--font-color);
-  display: inline-block;
-}
-
-.contact-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-.contact-list li {
-  margin-bottom: 0.75rem;
-  display: flex;
-  align-items: center;
-  font-size: 0.95rem;
-}
-
-.contact-icon {
-  margin-right: 0.75rem;
-  color: var(--active-link-color);
-  font-weight: 600;
-  min-width: 25px;
-}
-
-.contact-list a {
-  color: var(--font-color);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.contact-list a:hover {
-  color: var(--active-link-color);
-  text-decoration: underline;
-}
-
-.about-main-text p {
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-  line-height: 1.8;
-}
-
-.resume-link-container {
-  margin-top: 2rem;
-  text-align: left;
-}
-
-.resume-link {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: var(--active-link-color);
-  font-weight: 600;
-}
-
-.resume-icon {
-  font-size: 2rem;
-  margin-bottom: 0.25rem;
-}
-
-.resume-text {
-  font-size: 0.9rem;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-
-.resume-link:hover .resume-text,
-.resume-link:hover .resume-icon {
-  color: var(--font-color);
-}
-
-
-
-/* Responsive adjustments for About Page Grid */
-@media (max-width: 969px) {
-  .container {
-    width: 90% !important;
-    margin-left: auto;
-    margin-right: auto;
-  
-  }
-
-  /* MODIFIED: Re-order and create columns using CSS Grid for desktop */
-  .about-content-grid {
-    display: grid;
-   /*  grid-template-columns: 300px 1fr; Sidebar width and main content takes rest */
-    grid-template-areas:
-      "image text"
-      "contact text"; /* This defines the 2-column layout */
-    gap: 3rem; /* Increase gap on larger screens */
-  }
-
-  /* Assign grid areas to each element */
-  .about-profile-image {
-    grid-area: image;
-  }
-  .about-main-text {
-    grid-area: text;
-  }
-  .get-in-touch {
-    grid-area: contact;
-  }
-
-  /* MODIFIED/NEW STYLES FOR CONTACT LIST ON DESKTOP */
-  .contact-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
-    grid-template-rows: repeat(3, auto); /* Define three rows, height based on content */
-    grid-auto-flow: column; /* Fill items down the columns first */
-    column-gap: 2rem; /* Space between the two columns */
-    /* The existing margin-bottom on .contact-list li will handle row spacing.
-       If you prefer grid-row-gap, you can add it here and remove/adjust li margin-bottom. */
-    /* e.g., row-gap: 0.75rem; */
-  }
-
-  /* Optional: If you added row-gap to the grid and want to remove li margin for desktop */
-  /*
-  .contact-list li {
-    margin-bottom: 0;
-  }
-  */
-
-  .resume-link-container {
-    text-align: right;
-  }
-}
 
 .site-main {
   flex-grow: 1;
   display: flex;
   align-items: flex-start;
-  padding-top: 2rem;
+  padding-top: 4rem;
   padding-bottom: 1rem;
 }
 
@@ -366,16 +64,25 @@ body {
 .project1-column:nth-child(3) {
   width: 25%;
 }
-
 .section5 .project1-column:nth-child(1) {
-  width: 15%;
+  width: 14%;
 }
 
 .section5 .project1-column:nth-child(2) {
-  width: 85%;
+  width: 43%;
 }
 
 .section5 .project1-column:nth-child(3) {
+  width: 43%;
+}
+.section6 .project1-column:nth-child(1) {
+  width: 15%;
+}
+.section6 .project1-column:nth-child(2) {
+  width: 85%;
+}
+
+.section6 .project1-column:nth-child(3) {
   width: 0%;
 }
 div.project1-container.project2.twocolumn .project1-column:nth-child(1) {
@@ -461,8 +168,8 @@ div.project1-container.project2.starttwocolumn .project1-column:nth-child(3) {
   justify-content: flex-start;
   align-items: flex-start;
   gap: 10px;
-  padding: 20px;
-
+  position: relative;
+  top: -70px;
 }
 
 .NSSframe-logo {
@@ -497,7 +204,8 @@ div.project1-container.project2.starttwocolumn .project1-column:nth-child(3) {
 @media (max-width: 768px) {
   .NSSframe-container {
       gap: 8px;
-      padding: 15px;
+      padding: 50px;
+      top: 0px;
   }
   
   .NSSframe-logo:nth-child(1) {

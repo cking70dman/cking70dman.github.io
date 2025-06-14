@@ -1,5 +1,3 @@
-
-
 /* General Styles */
 
 
@@ -92,6 +90,8 @@ ul {
   background-color: var(--background-color);
   z-index: -10;
 }
+
+
 
 .submenu-container {
   background-color: var(--background-color);
@@ -204,6 +204,7 @@ ul {
 
   .nav-menu.active {
     display: flex;
+    background-color: var(--background-color);
   }
 
   .nav-item {
@@ -222,13 +223,9 @@ ul {
     height: 2px; /* Thinner underline for mobile if needed */
   }
 
-  .nav-item.has-submenu.open > .submenu,
-  .nav-item.has-submenu:hover > .submenu {
-    display: none; /* Disable hover for submenu on mobile, rely on click */
-  }
-
-  .nav-item.has-submenu.open-mobile > .submenu {
-    display: flex; /* Show submenu when parent is open-mobile */
+  /* Show submenu when main nav is active on mobile */
+  .nav-menu.active .nav-item.has-submenu > .submenu {
+    display: flex !important; /* Always show submenu when nav is active */
     position: static; /* Reset absolute positioning */
     flex-direction: column;
     border-top: none;
@@ -237,6 +234,12 @@ ul {
     transform: none;
     left: auto;
     text-align: left;
+    gap: 1px; /* Space between submenu items */
+  }
+
+  /* Remove the open-mobile class dependency for showing submenu */
+  .nav-item.has-submenu.open-mobile > .submenu {
+    display: flex; /* Keep this for backwards compatibility */
   }
 
   .submenu-item {
@@ -275,5 +278,48 @@ ul {
     bottom: 0;
     transform: rotate(90deg);
     opacity: 0; /* Hide bottom bar for X */
+  }
+}
+/* Submenu Background Strip - Desktop Only */
+.submenu-back {
+  position: fixed;
+  top: var(--header-height); /* Position directly below the header */
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 80px;
+  background-color: var(--background-color);
+  z-index: -1; /* Behind everything in the header */
+  display: none; /* Hidden by default */
+  pointer-events: none; /* Don't interfere with clicks */
+}
+
+/* Desktop only */
+@media (min-width: 970px) {
+  .submenu-back {
+    display: block; /* Always present on desktop, controlled by JavaScript */
+  }
+}
+
+/* Make sure the header and its contents stay above the background */
+.site-header {
+  z-index: 9000; /* Keep header high */
+}
+
+/* Ensure submenu-container has proper positioning */
+.submenu-container {
+  position: relative;
+  z-index: 1; /* Above the background strip */
+}
+
+/* Ensure submenu appears above everything */
+.submenu {
+  position: absolute;
+  z-index: 1000; /* High z-index to ensure visibility */
+}
+
+/* Mobile - hide the background strip completely */
+@media (max-width: 969px) {
+  .submenu-back {
+    display: none !important;
   }
 }

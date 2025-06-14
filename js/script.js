@@ -7,6 +7,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const projectsSubmenu = projectsMainLink ? projectsMainLink.nextElementSibling : null
   const hasSubmenuItems = document.querySelectorAll(".nav-item.has-submenu")
 
+  // Function to check if we're on a project page
+  function isOnProjectPage() {
+    const currentPath = window.location.pathname
+    return submenuLinks && Array.from(submenuLinks).some(link => {
+      const href = link.getAttribute('href')
+      return href && currentPath.endsWith(href)
+    })
+  }
+
+  // Function to keep submenu visible if on project page (desktop only)
+  function maintainSubmenuVisibility() {
+    if (window.innerWidth > 768 && isOnProjectPage() && projectsSubmenu) {
+      projectsSubmenu.style.display = "flex"
+      if (projectsMainLink && projectsMainLink.parentElement) {
+        projectsMainLink.parentElement.classList.add("open")
+      }
+    }
+  }
+
   // Toggle mobile menu
   if (navToggle && navMenu) {
     navToggle.addEventListener("click", () => {
@@ -104,7 +123,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (target === "projects" && window.innerWidth > 768) {
         if (projectsSubmenu) projectsSubmenu.style.display = "flex"
       } else if (window.innerWidth > 768 && !parentHasSubmenu) {
-        if (projectsSubmenu) projectsSubmenu.style.display = "none"
+        // Don't hide submenu if we're on a project page
+        if (projectsSubmenu && !isOnProjectPage()) {
+          projectsSubmenu.style.display = "none"
+        }
       }
 
       // If not "Projects", hide its submenu on mobile if it was open
@@ -227,9 +249,11 @@ document.addEventListener("DOMContentLoaded", () => {
   setInitialActiveState()
   
   if (projectsSubmenu && window.innerWidth > 768) {
-    // Hide projects submenu initially on desktop if home is active
+    // Show projects submenu on desktop if we're on a project page or projects is active
     const isProjectsActive = projectsMainLink && projectsMainLink.classList.contains("active")
-    if (!isProjectsActive) {
+    if (isProjectsActive || isOnProjectPage()) {
+      projectsSubmenu.style.display = "flex"
+    } else {
       projectsSubmenu.style.display = "none"
     }
   }
@@ -245,28 +269,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const isClickInsideProjectsSubmenu = projectsSubmenu ? projectsSubmenu.contains(event.target) : false
 
       if (!isClickInsideNav && !isClickInsideProjectsSubmenu) {
-        if (projectsSubmenu) projectsSubmenu.style.display = "none"
-        if (projectsMainLink && projectsMainLink.parentElement) {
-          projectsMainLink.parentElement.classList.remove("open")
-        }
-        // If "Projects" is not active, remove its active state
-        if (projectsMainLink && !projectsMainLink.classList.contains("active")) {
-          // This logic might need refinement based on desired behavior when clicking outside
-        } else if (
-          projectsMainLink &&
-          projectsMainLink.classList.contains("active") &&
-          !document.querySelector(".submenu-link.active")
-        ) {
-          // If projects is active but no sub-item, keep submenu open
-          if (projectsSubmenu) projectsSubmenu.style.display = "flex"
+        // Don't hide submenu if we're on a project page
+        if (projectsSubmenu && !isOnProjectPage()) {
+          projectsSubmenu.style.display = "none"
+          if (projectsMainLink && projectsMainLink.parentElement) {
+            projectsMainLink.parentElement.classList.remove("open")
+          }
         }
       }
     }
   })
 
-  // Handle window resize to reinitialize mobile titles
+  // Handle window resize to reinitialize mobile titles and maintain submenu visibility
   window.addEventListener('resize', () => {
     initializeMobileProjectTitles()
+    maintainSubmenuVisibility()
   })
 
   // Set current year in footer
@@ -274,4 +291,44 @@ document.addEventListener("DOMContentLoaded", () => {
   if (currentYearSpan) {
     currentYearSpan.textContent = new Date().getFullYear().toString()
   }
+
+  // Maintain submenu visibility on page load
+  maintainSubmenuVisibility()
 })
+
+// Add this to your existing script.js file
+
+// Function to show/hide submenu background strip
+function toggleSubmenuBackground(show) {
+  const submenuBack = document.querySelector('.submenu-back');
+  if (submenuBack && window.innerWidth > 969) {
+    submenuBack.style.display = show ? 'block' : 'none';
+  }
+}
+
+// Add this to your existing submenu hover/click handlers
+// For desktop hover behavior
+document.addEventListener('DOMContentLoaded', () => {
+  const projectsMainLink = document.querySelector('.nav-link[data-target="projects"]');
+  const hasSubmenuItems = document.querySelectorAll(".nav-item.has-submenu");
+  
+  if (window.innerWidth > 969) {
+    hasSubmenuItems.forEach((item) => {
+      item.addEventListener('mouseenter', () => {
+        toggleSubmenuBackground(true);
+      });
+      
+      item.addEventListener('mouseleave', () => {
+        // Only hide if not on a project page
+        if (!isOnProjectPage()) {
+          toggleSubmenuBackground(false);
+        }
+      });
+    });
+  }
+  
+  // Show background when on project page
+  if (isOnProjectPage() && window.innerWidth > 969) {
+    toggleSubmenuBackground(true);
+  }
+});

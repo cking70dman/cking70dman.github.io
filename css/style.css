@@ -5,7 +5,7 @@
   --background-color: #dad5d0;
   --font-family-main: "Overpass", sans-serif;
   --header-height: 5rem; /* Header height set to 5rem (80px) */
-  --logo-height: 2.5rem; /* Approx 40px, fits well in 5rem header */
+
 }
 
 *,
@@ -29,7 +29,7 @@ body {
 }
 
 .container {
-  width: 90%;
+  width: 100%;
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
@@ -58,13 +58,41 @@ body {
   width: 100%;
 }
 
-.logo-image {
-  height: var(--logo-height);
-  width: auto;
-  display: block;
+/* Submenu Background Strip - Desktop Only */
+.submenu-back {
+  position: fixed;
+  top: var(--header-height); /* Position directly below the header */
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 80px;
+  background-color: var(--background-color);
+  z-index: 997; /* Behind the submenu-container */
+  display: none; /* Hidden by default */
 }
 
+/* Desktop only */
+@media (min-width: 970px) {
+  .submenu-back {
+    display: block; /* Always present on desktop, controlled by JavaScript */
+  }
+}
 
+/* Ensure submenu-container and submenu appear above the background strip */
+.submenu-container {
+  z-index: 998; /* Above the submenu-back strip */
+  position: relative;
+}
+
+.submenu {
+  z-index: 999; /* Above everything */
+}
+
+/* Mobile - hide the background strip completely */
+@media (max-width: 969px) {
+  .submenu-back {
+    display: none !important;
+  }
+}
 
 /* Main Content Styles */
 .site-main {
